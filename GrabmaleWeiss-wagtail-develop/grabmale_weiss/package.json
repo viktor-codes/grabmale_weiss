@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "prettier": "^3.3.3",
+    "prettier-plugin-tailwindcss": "^0.6.8",
+    "tailwindcss": "^3.4.14"
+  },
+  "scripts": {
+    "dev": "npx tailwindcss -i ./grabmale_weiss/static/css/input.css -o ./grabmale_weiss/static/css/output.css --watch"
+  }
+}

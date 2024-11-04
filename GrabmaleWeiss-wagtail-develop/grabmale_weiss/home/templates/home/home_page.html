@@ -1,0 +1,178 @@
+{% extends "base.html" %} 
+{% load wagtailcore_tags wagtailimages_tags %} 
+{% load static %} 
+{% block content %}
+<section
+	class="container h-[830px] pt-[216px] bg-bannerImg bg-no-repeat bg-right"
+>
+	<div class="max-w-[836px]">
+		<div>
+			<h1 class="text-7xl leading-[86.4px]">{{ page.main_title }}</h1>
+			<div class="font-rethink text-darkgrey leading-[25.6px] my-8 w-[669px]">
+				{{ page.description|richtext }}
+			</div>
+			<div class="bg-black rounded-[100px] w-[191px]">
+				<a href="#" class="flex items-center gap-6 ps-6 p-1">
+					<span class="font-rethink text-white font-bold">{{ page.call_to_action }}</span>
+					<svg
+						width="38"
+						height="38"
+						viewBox="0 0 38 38"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<rect width="38" height="38" rx="19" fill="white" />
+						<path
+							d="M24.5 16.25L19 21.75L13.5 16.25"
+							stroke="#000D26"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						/>
+					</svg>
+				</a>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="container">
+	<div class="text-center">
+		<h2 class="text-black text-[50px] leading-[60px] mt-[90px]">
+			Unser Service
+		</h2>
+		<p class="font-rethink text-darkgrey leading-[25.6px] my-8">
+			Der Steinmetz- und Steinbildhauermeister Vincenzo Comite berät Sie
+			persönlich in allen Fragen rund um:
+		</p>
+	</div>
+	<div class="grid grid-cols-3 gap-8">
+		{% for block in page.services %}
+		<div
+			class="text-start flex flex-col w-[384px] p-4 items-start gap-4 border border-mediumgrey"
+		>
+			{% image block.value.image width-352 %}
+			<h3 class="text-[28px] leading-[33.6px]">{{ block.value.title }}</h3>
+			<div class="font-rethink text-darkgrey leading-[25.6px]">
+				{{ block.value.description|richtext }}
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+
+	<div class="flex items-start gap-[253px] self-stretch pt-16">
+		<div
+			class="flex w-[371px] flex-col justify-between items-start self-stretch"
+		>
+			<h2 class="text-black text-[50px] leading-[60px]">Wir bieten auch</h2>
+			<p class="text-black font-rethink text-sm leading-[22.4px]">
+				Alle Schriften sind bei uns handgezeichnet und handgeschlagen (keine
+				Computer- oder Plotterschriften).
+			</p>
+		</div>
+		<div class="flex w-[592px] flex-col items-start gap-8">
+			<h3 class="text-[28px] leading-[33.6px]">
+				Professioneller Handwerksbetrieb für Nachgestaltungen und
+				Restaurierungen von Grabmalen
+			</h3>
+			<p class="font-rethink text-darkgrey leading-[25.6px]">
+				Wir sind ein erfahrener Handwerksbetrieb, spezialisiert auf die
+				Nachgestaltung und Restaurierung von Grabmalen, um ihre Schönheit und
+				Bedeutung zu bewahren.
+			</p>
+
+			<hr class="w-full text-mediumgrey" />
+
+			<h3 class="text-[28px] leading-[33.6px]">
+				Besondere Fachkenntnisse für Restaurierung von alten Denkmälern
+			</h3>
+			<p class="font-rethink text-darkgrey leading-[25.6px]">
+				Mit unseren besonderen Fachkenntnissen in der Restaurierung alter
+				Denkmäler schützen und bewahren wir kulturelles Erbe für zukünftige
+				Generationen.
+			</p>
+		</div>
+	</div>
+</section>
+<section class="container">
+	<h2 class="text-center text-[50px] leading-[60px] mt-[206px]">
+		Über Uns
+	</h2>
+	<div class="flex items-start gap-[104px] mt-[64px] relative">
+			
+			<!-- Timeline Content -->
+			<div class="flex flex-col items-start gap-8">
+					<h3 class="text-[28px] mb-[64px]">Unsere Geschichte</h3>
+					
+					<div class="flex items-start gap-10">
+							<div class="w-[150px] flex justify-end items-center gap-3">
+									<p class="font-sm font-rethink text-darkgrey leading-[22.4px]">Februar, 1967</p>
+									<svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<circle cx="8.94275" cy="8" r="7" fill="#EDEDED" stroke="#636363" stroke-width="2"/>
+									</svg>
+							</div>
+							<div class="w-[384px] flex shrink-0">
+									<p class="font-rethink leading-[25.6px]">Der Betrieb wurde von Steinmetzmeister Siegfried Weiss gegründet.</p>
+							</div>
+					</div>
+
+					<div class="flex items-start gap-10">
+							<div class="w-[150px] flex justify-end items-center gap-3">
+									<p class="font-sm font-rethink text-darkgrey leading-[22.4px]">Dezember, 2005</p>
+									<svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<circle cx="8.94275" cy="8" r="7" fill="#EDEDED" stroke="#636363" stroke-width="2"/>
+									</svg>
+							</div>
+							<div class="w-[384px] flex shrink-0">
+									<p class="font-rethink leading-[25.6px]">Übernahme des Unternehmens durch Steinmetz- und Steinbildhauer-Meister Vincenzo Comité.</p>
+							</div>
+					</div>
+
+					<div class="flex items-start gap-10">
+							<div class="w-[150px] flex justify-end items-center gap-3">
+									<p class="font-sm font-rethink text-darkgrey leading-[22.4px]">Aktuell</p>
+									<svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<circle cx="8.94275" cy="8" r="7" fill="#EDEDED" stroke="#636363" stroke-width="2"/>
+									</svg>
+							</div>
+							<div class="w-[384px] flex flex-col">
+									<p class="font-rethink leading-[25.6px]">Die Firma Grabmale Weiss e.K. beschäftigt derzeit einen Steinmetz-und Steinbildhauer-Meister, einen Steinmetzgesellen, einen Steinmetzlehrling und eine Bürokraft.</p>
+									<p class="font-rethink leading-[25.6px]">Die Firma Grabmale Weiss ist zudem ein langjähriger und erfahrener Ausbildungsbetrieb.</p>
+							</div>
+					</div>
+			</div>
+			<div>
+					<img src="{% static 'assets/about1.png' %}" alt="" class="absolute right-0 top-0">
+					<img src="{% static 'assets/about2.png' %}" alt="" class="absolute right-[240px] bottom-0">
+			</div>
+	</div>
+</section>
+
+<section class="container my-[200px]">
+	<h2 class="text-black text-[50px] leading-[60px] text-center">Galerie</h2>
+	<div class="grid grid-cols-4 gap-8 mt-[64px]">
+		<div class="flex"><img src="{% static 'assets/about2.png' %}" alt="" class=""></div>
+		<div class="flex flex-col gap-8">
+			<img src="{% static 'assets/galery1.png' %}" alt="" class="">
+			<img src="{% static 'assets/galery2.png' %}" alt="" class="">
+		</div>
+		<div class="flex"><img src="{% static 'assets/about1.png' %}" alt="" class=""></div>
+		<div class="flex flex-col gap-8">
+			<img src="{% static 'assets/galery3.png' %}" alt="" class="">
+			<img src="{% static 'assets/galery4.png' %}" alt="" class="">
+		</div>
+	</div>
+	<div class="w-full flex justify-center gap-2 mt-8">
+		<buttton class="px-5 py-2 border border-lightgrey bg-white rounded-lg cursor-pointer">
+			<svg width="28" height="29" viewBox="0 0 28 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M17.2083 20.7733L10.7916 14.3566L17.2083 7.93994" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+				</svg>				
+		</buttton>
+		<buttton class="px-5 py-2 border border-lightgrey bg-white rounded-lg cursor-pointer">
+			<svg xmlns="http://www.w3.org/2000/svg" width="28" height="29" viewBox="0 0 28 29" fill="none">
+				<path d="M10.7917 7.93994L17.2084 14.3566L10.7917 20.7733" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+			</svg>
+		</buttton>
+	</div>
+</section>
+
+{% endblock content %}

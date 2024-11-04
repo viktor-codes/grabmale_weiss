@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	body {
+		@apply font-armarante;
+	}
+}
+
+.richtext > p {
+	@apply text-darkgrey font-rethink leading-[25.6px];
+}
