@@ -678,10 +678,6 @@ body {
   width: 100%;
 }
 
-.w-\[192px\] {
-  width: 192px;
-}
-
 .max-w-\[836px\] {
   max-width: 836px;
 }
@@ -883,11 +879,6 @@ body {
   font-family: Rethink Sans, sans-serif;
 }
 
-.text-7xl {
-  font-size: 4.5rem;
-  line-height: 1;
-}
-
 .text-\[28px\] {
   font-size: 28px;
 }
@@ -896,9 +887,38 @@ body {
   font-size: 50px;
 }
 
+.text-h1-desktop {
+  font-size: 72px;
+  line-height: 120%;
+}
+
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
+}
+
+.text-body1 {
+  font-size: 16px;
+  line-height: 160%;
+}
+
+.text-body2 {
+  font-size: 16px;
+}
+
+.text-h2-desktop {
+  font-size: 50px;
+  line-height: 120%;
+}
+
+.text-body3 {
+  font-size: 14px;
+  line-height: 160%;
+}
+
+.text-h3-desktop {
+  font-size: 28px;
+  line-height: 120%;
 }
 
 .font-bold {
@@ -919,10 +939,6 @@ body {
 
 .leading-\[60px\] {
   line-height: 60px;
-}
-
-.leading-\[86\.4px\] {
-  line-height: 86.4px;
 }
 
 .text-black {
@@ -950,4 +966,21 @@ body {
   line-height: 25.6px;
   --tw-text-opacity: 1;
   color: rgb(99 99 99 / var(--tw-text-opacity));
+}
+
+@media (max-width: 767.99px) {
+  .sm\:text-h1-mobile {
+    font-size: 36px;
+    line-height: 120%;
+  }
+
+  .sm\:text-h2-mobile {
+    font-size: 26px;
+    line-height: 120%;
+  }
+
+  .sm\:text-h3-mobile {
+    font-size: 20px;
+    line-height: 120%;
+  }
 }
