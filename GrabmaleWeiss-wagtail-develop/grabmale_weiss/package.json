@@ -7,5 +7,8 @@
   "scripts": {
     "dev": "npx tailwindcss -i ./grabmale_weiss/static/css/input.css -o ./grabmale_weiss/static/css/output.css --watch",
     "format": "prettier --write ."
+  },
+  "dependencies": {
+    "alpinejs": "^3.14.3"
   }
 }

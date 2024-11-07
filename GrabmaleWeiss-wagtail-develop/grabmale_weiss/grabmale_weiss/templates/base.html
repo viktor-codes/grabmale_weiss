@@ -45,24 +45,24 @@
       href="{% static 'css/output.css' %}"
     />
 
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
     {% block extra_css %} 
     {# Override this in templates to add extra stylesheets #} 
     {% endblock %}
   </head>
 
-  <body class="">
+  <body class="bg-[#EDEDED]">
     {% include "includes/header.html" %} 
     
     {% block content %}
+    
     {% endblock %} 
 
     {% include "includes/footer.html" %} 
     
     {# Global javascript #}
-    <script
-      type="text/javascript"
-      src="{% static 'js/grabmale_weiss.js' %}"
-    ></script>
+    <script type="text/javascript" src="{% static 'js/grabmale_weiss.js' %}"></script>
 
     {% block extra_js %} 
     {# Override this in templates to add extra javascript #} 

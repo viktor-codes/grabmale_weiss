@@ -7,7 +7,3 @@
     @apply font-armarante;
   }
 }
-
-.richtext > p {
-  @apply font-rethink leading-[25.6px] text-darkgrey;
-}

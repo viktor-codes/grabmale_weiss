@@ -1,17 +1,23 @@
-{% extends "base.html" %} {% load static wagtailcore_tags wagtailimages_tags %}
+{% extends "base.html" %} 
+{% load static wagtailcore_tags wagtailimages_tags %}
+
 {% block content %}
 <section
-  class="container h-[830px] bg-bannerImg bg-right bg-no-repeat pt-[216px]"
+  class="bg-bannerImg sm:bg-bannerImgMobile container h-[830px] bg-right bg-no-repeat px-28 pt-52 sm:h-[504px] sm:px-5 sm:pt-32"
 >
   <div class="max-w-[836px]">
     <div>
       <h1 class="text-h1-desktop sm:text-h1-mobile">{{ page.main_title }}</h1>
-      <div class="my-8 w-[669px] font-rethink text-body1 text-darkgrey">
+      <div
+        class="font-rethink text-body1 text-darkgrey my-8 w-[669px] sm:w-full"
+      >
         {{ page.description|richtext }}
       </div>
-      <div class="w-[191px] rounded-[100px] bg-black">
+      <div
+        class="hover:bg-darkgrey focus:bg-darkgrey w-[191px] rounded-full bg-black"
+      >
         <a href="#" class="flex items-center gap-6 p-1 ps-6">
-          <span class="font-rethink font-bold text-body2 text-white"
+          <span class="font-rethink text-body2 font-bold text-white"
             >{{ page.call_to_action }}</span
           >
           <svg
@@ -35,22 +41,22 @@
     </div>
   </div>
 </section>
-<section class="container">
+<section class="container px-28 sm:px-5">
   <div class="text-center">
-    <h2 class="mt-[90px] text-h2-desktop sm:text-h2-mobile text-black">
+    <h2 class="text-h2-desktop sm:text-h2-mobile mt-24 text-black">
       Unser Service
     </h2>
-    <p class="my-8 font-rethink text-body2 text-darkgrey">
+    <p class="font-rethink text-body2 text-darkgrey my-8">
       Der Steinmetz- und Steinbildhauermeister Vincenzo Comite berät Sie
       persönlich in allen Fragen rund um:
     </p>
   </div>
-  <div class="grid grid-cols-3 gap-8">
+  <div class="grid grid-cols-3 gap-8 sm:grid-cols-1 sm:gap-5">
     {% for block in page.services %}
     <div
-      class="flex w-[384px] flex-col items-start gap-4 border border-mediumgrey p-4 text-start"
+      class="border-mediumgrey flex w-full flex-col items-start gap-4 border p-4 text-start sm:p-3"
     >
-      {% image block.value.image width-352 %}
+      {% image block.value.image height-200 %}
       <h3 class="text-h3-desktop sm:text-h3-mobile">{{ block.value.title }}</h3>
       <div class="font-rethink text-body1 text-darkgrey">
         {{ block.value.description|richtext }}
@@ -59,17 +65,21 @@
     {% endfor %}
   </div>
 
-  <div class="flex items-start gap-[253px] self-stretch pt-16">
+  <div
+    class="flex items-start justify-between gap-10 self-stretch pt-16 sm:flex-col"
+  >
     <div
-      class="flex w-[371px] flex-col items-start justify-between self-stretch"
+      class="flex w-full max-w-[370px] flex-col items-start justify-between self-stretch"
     >
-      <h2 class="text-h2-desktop sm:text-h2-mobile text-black">Wir bieten auch</h2>
-      <p class="font-rethink text-sm leading-[22.4px] text-black">
+      <h2 class="text-h2-desktop sm:text-h2-mobile text-black">
+        Wir bieten auch
+      </h2>
+      <p class="font-rethink text-body3 text-black sm:hidden">
         Alle Schriften sind bei uns handgezeichnet und handgeschlagen (keine
         Computer- oder Plotterschriften).
       </p>
     </div>
-    <div class="flex w-[592px] flex-col items-start gap-8">
+    <div class="flex w-[592px] flex-col items-start gap-8 sm:w-full">
       <h3 class="text-h3-desktop sm:text-h3-mobile">
         Professioneller Handwerksbetrieb für Nachgestaltungen und
         Restaurierungen von Grabmalen
@@ -80,7 +90,7 @@
         Bedeutung zu bewahren.
       </p>
 
-      <hr class="w-full text-mediumgrey" />
+      <hr class="text-mediumgrey w-full" />
 
       <h3 class="text-h3-desktop sm:text-h3-mobile">
         Besondere Fachkenntnisse für Restaurierung von alten Denkmälern
@@ -91,29 +101,50 @@
         Generationen.
       </p>
     </div>
+    <div class="bg-mediumgrey hidden rounded-md py-2 text-center sm:block">
+      <p class="font-rethink text-body3 text-black">
+        Alle Schriften sind bei uns handgezeichnet und handgeschlagen (keine
+        Computer- oder Plotterschriften).
+      </p>
+    </div>
   </div>
 </section>
-<section class="container">
-  <h2 class="mt-[206px] text-center text-h2-desktop sm:text-h2-mobile">Über Uns</h2>
-  <div class="relative mt-[64px] flex items-start gap-[104px]">
-    <!-- Timeline Content -->
-    <div class="flex flex-col items-start gap-8">
-      <h3 class="mb-[64px] text-h3-desktop sm:text-h3-mobile">Unsere Geschichte</h3>
+<section class="container px-28 sm:px-5 mb-44">
+  <h2 class="text-h2-desktop sm:text-h2-mobile mt-20 text-center">Über Uns</h2>
 
-      <div class="flex items-start gap-10">
-        <div class="flex w-[150px] items-center justify-end gap-3">
-          <p class="font-sm font-rethink text-body3 text-darkgrey">
-            Februar, 1967
-          </p>
+  <div class="mt-12 flex flex-row sm:flex-col">
+    <!-- Timeline Column -->
+    <div class="relative flex flex-col">
+      <h3 class="text-h3-desktop sm:text-h3-mobile mb-8 sm:mb-5">
+        Unsere Geschichte
+      </h3>
+
+      <!-- Vertical Line for the timeline -->
+      <div
+        class="from-mediumgrey absolute left-[132px] top-28 h-full w-[1px] bg-gradient-to-b to-transparent sm:left-[104px] sm:top-20"
+      ></div>
+
+      <!-- Timeline Item 1 -->
+      <div class="flex items-start gap-x-3 py-8 sm:gap-x-4">
+        <!-- Date -->
+        <div
+          class="text-darkgrey font-rethink text-body3 w-28 flex-shrink-0 text-right sm:w-20"
+        >
+          Februar, 1967
+        </div>
+
+        <!-- Icon and Content -->
+        <div class="relative flex flex-shrink-0 items-center">
+          <!-- Circle Icon -->
           <svg
+            xmlns="http://www.w3.org/2000/svg"
             width="17"
             height="16"
             viewBox="0 0 17 16"
             fill="none"
-            xmlns="http://www.w3.org/2000/svg"
           >
             <circle
-              cx="8.94275"
+              cx="8.5"
               cy="8"
               r="7"
               fill="#EDEDED"
@@ -122,27 +153,35 @@
             />
           </svg>
         </div>
-        <div class="flex w-[384px] shrink-0">
+
+        <div class="w-96 flex-shrink-0 sm:w-48">
           <p class="font-rethink text-body1">
             Der Betrieb wurde von Steinmetzmeister Siegfried Weiss gegründet.
           </p>
         </div>
       </div>
 
-      <div class="flex items-start gap-10">
-        <div class="flex w-[150px] items-center justify-end gap-3">
-          <p class="font-sm font-rethink text-body3 text-darkgrey">
-            Dezember, 2005
-          </p>
+      <!-- Timeline Item 2 -->
+      <div class="flex items-start gap-x-3 py-8 sm:gap-x-4">
+        <!-- Date -->
+        <div
+          class="text-darkgrey font-rethink text-body3 w-28 flex-shrink-0 text-right sm:w-20"
+        >
+          Dezember, 2005
+        </div>
+
+        <!-- Icon and Content -->
+        <div class="relative flex flex-shrink-0 items-center">
+          <!-- Circle Icon -->
           <svg
+            xmlns="http://www.w3.org/2000/svg"
             width="17"
             height="16"
             viewBox="0 0 17 16"
             fill="none"
-            xmlns="http://www.w3.org/2000/svg"
           >
             <circle
-              cx="8.94275"
+              cx="8.5"
               cy="8"
               r="7"
               fill="#EDEDED"
@@ -151,7 +190,8 @@
             />
           </svg>
         </div>
-        <div class="flex w-[384px] shrink-0">
+
+        <div class="w-96 flex-shrink-0 sm:w-48">
           <p class="font-rethink text-body1">
             Übernahme des Unternehmens durch Steinmetz- und
             Steinbildhauer-Meister Vincenzo Comité.
@@ -159,20 +199,27 @@
         </div>
       </div>
 
-      <div class="flex items-start gap-10">
-        <div class="flex w-[150px] items-center justify-end gap-3">
-          <p class="font-sm font-rethink text-body3 text-darkgrey">
-            Aktuell
-          </p>
+      <!-- Timeline Item 3 -->
+      <div class="flex items-start gap-x-3 py-8 sm:gap-x-4">
+        <!-- Date -->
+        <div
+          class="text-darkgrey font-rethink text-body3 w-28 flex-shrink-0 text-right sm:w-20"
+        >
+          Aktuell
+        </div>
+
+        <!-- Icon and Content -->
+        <div class="relative flex flex-shrink-0 items-center">
+          <!-- Circle Icon -->
           <svg
+            xmlns="http://www.w3.org/2000/svg"
             width="17"
             height="16"
             viewBox="0 0 17 16"
             fill="none"
-            xmlns="http://www.w3.org/2000/svg"
           >
             <circle
-              cx="8.94275"
+              cx="8.5"
               cy="8"
               r="7"
               fill="#EDEDED"
@@ -181,37 +228,42 @@
             />
           </svg>
         </div>
-        <div class="flex w-[384px] flex-col">
-          <p class="font-rethink text-body1">
+
+        <div class="font-rethink text-body1 w-96 flex-shrink-0 sm:w-48">
+          <p class="">
             Die Firma Grabmale Weiss e.K. beschäftigt derzeit einen
             Steinmetz-und Steinbildhauer-Meister, einen Steinmetzgesellen, einen
             Steinmetzlehrling und eine Bürokraft.
           </p>
-          <p class="font-rethink text-body1">
+          <p class="py-2">
             Die Firma Grabmale Weiss ist zudem ein langjähriger und erfahrener
             Ausbildungsbetrieb.
           </p>
         </div>
       </div>
     </div>
-    <div>
+
+    <!-- Placeholder for Images Column or Additional Content -->
+    <div class="relative flex flex-col sm:mb-16 sm:mt-10 sm:w-full lg:w-1/2">
       <img
         src="{% static 'assets/about1.png' %}"
         alt=""
-        class="absolute right-0 top-0"
+        class="absolute -right-16 top-0 sm:right-0 sm:h-[235px]"
       />
       <img
         src="{% static 'assets/about2.png' %}"
         alt=""
-        class="absolute bottom-0 right-[240px]"
+        class="absolute bottom-8 left-40 sm:left-0 sm:top-16 sm:h-[235px]"
       />
     </div>
   </div>
 </section>
 
-<section class="container my-[200px]">
-  <h2 class="text-center text-h2-desktop sm:text-h2-mobile text-black">Galerie</h2>
-  <div class="mt-[64px] grid grid-cols-4 gap-8">
+<section class="container my-52 px-28 sm:px-5">
+  <h2 class="text-h2-desktop sm:text-h2-mobile text-center text-black">
+    Galerie
+  </h2>
+  <div class="mt-16 grid grid-cols-4 gap-8">
     <div class="flex">
       <img src="{% static 'assets/about2.png' %}" alt="" class="" />
     </div>
@@ -228,8 +280,8 @@
     </div>
   </div>
   <div class="mt-8 flex w-full justify-center gap-2">
-    <buttton
-      class="cursor-pointer rounded-lg border border-lightgrey bg-white px-5 py-2"
+    <button
+      class="border-lightgrey cursor-pointer rounded-lg border bg-white px-5 py-2"
     >
       <svg
         width="28"
@@ -246,9 +298,9 @@
           stroke-linejoin="round"
         />
       </svg>
-    </buttton>
-    <buttton
-      class="cursor-pointer rounded-lg border border-lightgrey bg-white px-5 py-2"
+    </button>
+    <button
+      class="border-lightgrey cursor-pointer rounded-lg border bg-white px-5 py-2"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -265,7 +317,7 @@
           stroke-linejoin="round"
         />
       </svg>
-    </buttton>
+    </button>
   </div>
 </section>
 

@@ -5,8 +5,7 @@ module.exports = {
     screens: {
       lg: { max: "1999.99px" },
       md: { max: "991.99px" },
-      sm: { max: "767.99px" },
-      xs: { max: "479.99px" },
+      sm: { max: "479.99px" },
     },
     extend: {
       fontSize: {
@@ -30,6 +29,8 @@ module.exports = {
       },
       backgroundImage: {
         bannerImg: "url('/static/assets/banner.png')",
+        bannerImgMobile: "url('/static/assets/banner-mobile.png')",
+        footerImg: "url('/static/assets/footer-bg.png')",
       },
       colors: {
         white: "#FFFFFF",
@@ -40,9 +41,6 @@ module.exports = {
         gradient:
           "linear-gradient(90deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.10) 44.88%)",
       },
-    },
-    container: {
-      padding: "7rem",
     },
   },
   plugins: [],
