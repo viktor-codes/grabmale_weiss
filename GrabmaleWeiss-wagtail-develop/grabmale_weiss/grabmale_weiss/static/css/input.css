@@ -7,3 +7,45 @@
     @apply font-armarante;
   }
 }
+
+@layer components {
+  .custom-container {
+    @apply w-full px-5; /* Default padding */
+  }
+
+  @media (min-width: 640px) {
+    .custom-container {
+      @apply px-5; /* Padding for sm screens */
+    }
+  }
+
+  @media (min-width: 768px) {
+    .custom-container {
+      @apply px-12; /* Padding for md screens */
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .custom-container {
+      @apply px-24; /* Padding for lg screens */
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .custom-container {
+      @apply px-28; /* Padding for xl screens */
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .custom-container {
+      @apply px-64; /* Padding for 2xl screens */
+    }
+  }
+
+  @media (min-width: 2100px) {
+    .custom-container {
+      @apply px-96;
+    }
+  }
+}

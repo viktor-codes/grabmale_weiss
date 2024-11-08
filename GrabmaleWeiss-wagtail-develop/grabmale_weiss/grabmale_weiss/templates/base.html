@@ -5,20 +5,10 @@
   <head>
     <meta charset="utf-8" />
     <title>
-      {% block title %} 
-        {% if page.seo_title %}
-          {{ page.seo_title }}
-        {% else %} 
-          {{ page.title }} 
-        {% endif %} 
-      {% endblock %} 
-      
-      {% block title_suffix %} 
-        {% wagtail_site as current_site %} 
-          {% if current_site and current_site.site_name %}
-             -{{ current_site.site_name }} 
-        {% endif %} 
-      {% endblock %}
+      {% block title %} {% if page.seo_title %} {{ page.seo_title }} {% else %}
+      {{ page.title }} {% endif %} {% endblock %} {% block title_suffix %} 
+      {%wagtail_site as current_site %} 
+      {% if current_site and current_site.site_name %} -{{ current_site.site_name }} {% endif %} {%endblock %}
     </title>
     {% if page.search_description %}
     <meta name="description" content="{{ page.search_description }}" />
@@ -28,9 +18,7 @@
     {# Force all links in the live preview panel to be opened in a new tab #} 
     {% if request.in_preview_panel %}
     <base target="_blank" />
-    {% endif %} 
-    
-    {# Fonts #}
+    {% endif %} {# Fonts #}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -45,27 +33,30 @@
       href="{% static 'css/output.css' %}"
     />
 
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
 
     {% block extra_css %} 
-    {# Override this in templates to add extra stylesheets #} 
-    {% endblock %}
+    {# Override this in templates to add extra stylesheets #} {% endblock %}
   </head>
 
-  <body class="bg-[#EDEDED]">
-    {% include "includes/header.html" %} 
+  <body class="bg-lightgrey">
     
-    {% block content %}
-    
-    {% endblock %} 
+      {% include "includes/header.html" %} 
+      {% block content %} 
+      {% endblock %}
+      {% include "includes/footer.html" %} 
+   
 
-    {% include "includes/footer.html" %} 
-    
     {# Global javascript #}
-    <script type="text/javascript" src="{% static 'js/grabmale_weiss.js' %}"></script>
+    <script
+      type="text/javascript"
+      src="{% static 'js/grabmale_weiss.js' %}"
+    ></script>
 
     {% block extra_js %} 
-    {# Override this in templates to add extra javascript #} 
-    {% endblock %}
+    {# Override this in templates to add extra javascript #} {% endblock %}
   </body>
 </html>

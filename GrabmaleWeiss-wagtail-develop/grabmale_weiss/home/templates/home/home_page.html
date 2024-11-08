@@ -1,150 +1,142 @@
-{% extends "base.html" %} 
-{% load static wagtailcore_tags wagtailimages_tags %}
-
+{% extends "base.html" %} {% load static wagtailcore_tags wagtailimages_tags %}
 {% block content %}
-<section
-  class="bg-bannerImg sm:bg-bannerImgMobile container h-[830px] bg-right bg-no-repeat px-28 pt-52 sm:h-[504px] sm:px-5 sm:pt-32"
->
-  <div class="max-w-[836px]">
-    <div>
-      <h1 class="text-h1-desktop sm:text-h1-mobile">{{ page.main_title }}</h1>
-      <div
-        class="font-rethink text-body1 text-darkgrey my-8 w-[669px] sm:w-full"
-      >
-        {{ page.description|richtext }}
-      </div>
-      <div
-        class="hover:bg-darkgrey focus:bg-darkgrey w-[191px] rounded-full bg-black"
-      >
-        <a href="#" class="flex items-center gap-6 p-1 ps-6">
-          <span class="font-rethink text-body2 font-bold text-white"
-            >{{ page.call_to_action }}</span
-          >
-          <svg
-            width="38"
-            height="38"
-            viewBox="0 0 38 38"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <rect width="38" height="38" rx="19" fill="white" />
-            <path
-              d="M24.5 16.25L19 21.75L13.5 16.25"
-              stroke="#000D26"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </a>
-      </div>
+<section id="hero" class="custom-container min-h-100svh relative">
+  <img
+    src="{% static 'assets/banner.png' %}"
+    alt="banner"
+    class="absolute right-0 h-[510px] object-cover sm:h-full"
+  />
+
+  <div
+    class="relative z-10 flex max-w-[836px] flex-col items-start gap-8 pt-32 lg:pt-56 md:pt-40"
+  >
+    <h1 class="2xl:text-8xl text-4xl sm:text-7xl">{{ page.main_title }}</h1>
+    <div class="my-8 w-3/4 font-rethink text-base text-darkgrey">
+      {{ page.description|richtext }}
+    </div>
+    <div
+      class="w-[191px] rounded-full bg-black hover:bg-darkgrey focus:bg-darkgrey"
+    >
+      <a href="#" class="flex items-center gap-6 p-1 ps-6">
+        <span class="text-body2 font-rethink font-bold text-white"
+          >{{ page.call_to_action }}</span
+        >
+        <svg
+          width="38"
+          height="38"
+          viewBox="0 0 38 38"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect width="38" height="38" rx="19" fill="white" />
+          <path
+            d="M24.5 16.25L19 21.75L13.5 16.25"
+            stroke="#000D26"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </a>
     </div>
   </div>
 </section>
-<section class="container px-28 sm:px-5">
+
+<section id="our_services" class="custom-container mt-24">
   <div class="text-center">
-    <h2 class="text-h2-desktop sm:text-h2-mobile mt-24 text-black">
-      Unser Service
-    </h2>
-    <p class="font-rethink text-body2 text-darkgrey my-8">
+    <h2 class="2xl:text-5xl text-3xl sm:text-4xl">Unser Service</h2>
+    <p class="my-8 font-rethink text-base text-darkgrey">
       Der Steinmetz- und Steinbildhauermeister Vincenzo Comite berät Sie
       persönlich in allen Fragen rund um:
     </p>
   </div>
-  <div class="grid grid-cols-3 gap-8 sm:grid-cols-1 sm:gap-5">
+  <div
+    class="2xl:grid-cols-4 grid grid-cols-1 gap-5 md:grid-cols-3 sm:grid-cols-2 sm:gap-8"
+  >
     {% for block in page.services %}
-    <div
-      class="border-mediumgrey flex w-full flex-col items-start gap-4 border p-4 text-start sm:p-3"
-    >
-      {% image block.value.image height-200 %}
-      <h3 class="text-h3-desktop sm:text-h3-mobile">{{ block.value.title }}</h3>
-      <div class="font-rethink text-body1 text-darkgrey">
-        {{ block.value.description|richtext }}
+    <div class="flex flex-col gap-4 border border-mediumgrey p-3 sm:p-4">
+      <!-- Center the image -->
+      <div class="flex items-center justify-center">
+        {% image block.value.image height-200 %}
+      </div>
+
+      <!-- Text aligned to the start -->
+      <div class="flex flex-col items-start">
+        <h3 class="text-xl lg:text-2xl">{{ block.value.title }}</h3>
+        <div class="py-4 font-rethink text-base text-darkgrey">
+          {{ block.value.description|richtext }}
+        </div>
       </div>
     </div>
     {% endfor %}
   </div>
 
   <div
-    class="flex items-start justify-between gap-10 self-stretch pt-16 sm:flex-col"
+    class="flex flex-col items-start justify-between gap-10 self-stretch pt-16 lg:gap-52 sm:flex-row sm:gap-20"
   >
     <div
       class="flex w-full max-w-[370px] flex-col items-start justify-between self-stretch"
     >
-      <h2 class="text-h2-desktop sm:text-h2-mobile text-black">
-        Wir bieten auch
-      </h2>
-      <p class="font-rethink text-body3 text-black sm:hidden">
+      <h2 class="text-2xl lg:text-4xl sm:text-3xl">Wir bieten auch</h2>
+      <p class="hidden font-rethink text-base sm:block">
         Alle Schriften sind bei uns handgezeichnet und handgeschlagen (keine
         Computer- oder Plotterschriften).
       </p>
     </div>
-    <div class="flex w-[592px] flex-col items-start gap-8 sm:w-full">
-      <h3 class="text-h3-desktop sm:text-h3-mobile">
+    <div class="flex flex-col items-start gap-8">
+      <h3 class="text-xl lg:text-2xl">
         Professioneller Handwerksbetrieb für Nachgestaltungen und
         Restaurierungen von Grabmalen
       </h3>
-      <p class="font-rethink text-body1 text-darkgrey">
+      <p class="font-rethink text-base text-darkgrey">
         Wir sind ein erfahrener Handwerksbetrieb, spezialisiert auf die
         Nachgestaltung und Restaurierung von Grabmalen, um ihre Schönheit und
         Bedeutung zu bewahren.
       </p>
 
-      <hr class="text-mediumgrey w-full" />
+      <hr class="w-full text-mediumgrey" />
 
-      <h3 class="text-h3-desktop sm:text-h3-mobile">
+      <h3 class="text-xl lg:text-2xl">
         Besondere Fachkenntnisse für Restaurierung von alten Denkmälern
       </h3>
-      <p class="font-rethink text-body1 text-darkgrey">
+      <p class="font-rethink text-base text-darkgrey">
         Mit unseren besonderen Fachkenntnissen in der Restaurierung alter
         Denkmäler schützen und bewahren wir kulturelles Erbe für zukünftige
         Generationen.
       </p>
     </div>
-    <div class="bg-mediumgrey hidden rounded-md py-2 text-center sm:block">
-      <p class="font-rethink text-body3 text-black">
+    <div
+      class="mx-auto max-w-96 rounded-md bg-mediumgrey py-2 text-center sm:hidden"
+    >
+      <p class="font-rethink text-[14px] text-black">
         Alle Schriften sind bei uns handgezeichnet und handgeschlagen (keine
         Computer- oder Plotterschriften).
       </p>
     </div>
   </div>
 </section>
-<section class="container px-28 sm:px-5 mb-44">
-  <h2 class="text-h2-desktop sm:text-h2-mobile mt-20 text-center">Über Uns</h2>
+<section id="about_us" class="custom-container mt-36">
+  <h2 class="2xl:text-5xl text-center text-3xl sm:text-4xl">Über Uns</h2>
 
-  <div class="mt-12 flex flex-row sm:flex-col">
+  <div class="mt-12 flex flex-col gap-10 md:flex-row sm:gap-40">
     <!-- Timeline Column -->
-    <div class="relative flex flex-col">
-      <h3 class="text-h3-desktop sm:text-h3-mobile mb-8 sm:mb-5">
-        Unsere Geschichte
-      </h3>
+    <div class="relative flex w-full flex-col md:w-1/2">
+      <h3 class="mb-5 text-xl lg:text-2xl sm:mb-8">Unsere Geschichte</h3>
 
-      <!-- Vertical Line for the timeline -->
-      <div
-        class="from-mediumgrey absolute left-[132px] top-28 h-full w-[1px] bg-gradient-to-b to-transparent sm:left-[104px] sm:top-20"
-      ></div>
-
-      <!-- Timeline Item 1 -->
-      <div class="flex items-start gap-x-3 py-8 sm:gap-x-4">
-        <!-- Date -->
-        <div
-          class="text-darkgrey font-rethink text-body3 w-28 flex-shrink-0 text-right sm:w-20"
-        >
-          Februar, 1967
-        </div>
-
-        <!-- Icon and Content -->
-        <div class="relative flex flex-shrink-0 items-center">
-          <!-- Circle Icon -->
+      <ol
+        class="gradient-to-b relative border-s border-mediumgrey to-transparent"
+      >
+        <li class="mb-10 ms-4">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="17"
             height="16"
             viewBox="0 0 17 16"
             fill="none"
+            class="absolute -start-[9.5px] mt-1"
           >
             <circle
-              cx="8.5"
+              cx="8.94275"
               cy="8"
               r="7"
               fill="#EDEDED"
@@ -152,36 +144,25 @@
               stroke-width="2"
             />
           </svg>
-        </div>
+          <time class="font-rethink text-base text-darkgrey"
+            >Februar, 1967</time
+          >
 
-        <div class="w-96 flex-shrink-0 sm:w-48">
-          <p class="font-rethink text-body1">
+          <p class="my-4 font-rethink text-base font-normal text-black">
             Der Betrieb wurde von Steinmetzmeister Siegfried Weiss gegründet.
           </p>
-        </div>
-      </div>
-
-      <!-- Timeline Item 2 -->
-      <div class="flex items-start gap-x-3 py-8 sm:gap-x-4">
-        <!-- Date -->
-        <div
-          class="text-darkgrey font-rethink text-body3 w-28 flex-shrink-0 text-right sm:w-20"
-        >
-          Dezember, 2005
-        </div>
-
-        <!-- Icon and Content -->
-        <div class="relative flex flex-shrink-0 items-center">
-          <!-- Circle Icon -->
+        </li>
+        <li class="mb-10 ms-4">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="17"
             height="16"
             viewBox="0 0 17 16"
             fill="none"
+            class="absolute -start-[9.5px] mt-1"
           >
             <circle
-              cx="8.5"
+              cx="8.94275"
               cy="8"
               r="7"
               fill="#EDEDED"
@@ -189,37 +170,26 @@
               stroke-width="2"
             />
           </svg>
-        </div>
+          <time class="font-rethink text-base text-darkgrey"
+            >Dezember, 2005</time
+          >
 
-        <div class="w-96 flex-shrink-0 sm:w-48">
-          <p class="font-rethink text-body1">
+          <p class="my-4 font-rethink text-base font-normal text-black">
             Übernahme des Unternehmens durch Steinmetz- und
             Steinbildhauer-Meister Vincenzo Comité.
           </p>
-        </div>
-      </div>
-
-      <!-- Timeline Item 3 -->
-      <div class="flex items-start gap-x-3 py-8 sm:gap-x-4">
-        <!-- Date -->
-        <div
-          class="text-darkgrey font-rethink text-body3 w-28 flex-shrink-0 text-right sm:w-20"
-        >
-          Aktuell
-        </div>
-
-        <!-- Icon and Content -->
-        <div class="relative flex flex-shrink-0 items-center">
-          <!-- Circle Icon -->
+        </li>
+        <li class="mb-10 ms-4">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="17"
             height="16"
             viewBox="0 0 17 16"
             fill="none"
+            class="absolute -start-[9.5px] mt-1"
           >
             <circle
-              cx="8.5"
+              cx="8.94275"
               cy="8"
               r="7"
               fill="#EDEDED"
@@ -227,43 +197,42 @@
               stroke-width="2"
             />
           </svg>
-        </div>
+          <time class="font-rethink text-base text-darkgrey">Aktuell</time>
 
-        <div class="font-rethink text-body1 w-96 flex-shrink-0 sm:w-48">
-          <p class="">
-            Die Firma Grabmale Weiss e.K. beschäftigt derzeit einen
-            Steinmetz-und Steinbildhauer-Meister, einen Steinmetzgesellen, einen
-            Steinmetzlehrling und eine Bürokraft.
-          </p>
-          <p class="py-2">
-            Die Firma Grabmale Weiss ist zudem ein langjähriger und erfahrener
-            Ausbildungsbetrieb.
-          </p>
-        </div>
-      </div>
+          <div class="my-4 font-rethink text-base font-normal text-black">
+            <p>
+              Die Firma Grabmale Weiss e.K. beschäftigt derzeit einen
+              Steinmetz-und Steinbildhauer-Meister, einen Steinmetzgesellen,
+              einen Steinmetzlehrling und eine Bürokraft.
+            </p>
+            <p class="mt-2">
+              Die Firma Grabmale Weiss ist zudem ein langjähriger und erfahrener
+              Ausbildungsbetrieb.
+            </p>
+          </div>
+        </li>
+      </ol>
     </div>
 
     <!-- Placeholder for Images Column or Additional Content -->
-    <div class="relative flex flex-col sm:mb-16 sm:mt-10 sm:w-full lg:w-1/2">
+    <div class="relative h-[350px] md:w-1/2 sm:h-[500px]">
       <img
         src="{% static 'assets/about1.png' %}"
         alt=""
-        class="absolute -right-16 top-0 sm:right-0 sm:h-[235px]"
+        class="absolute right-0 top-0 h-[235px] lg:h-[336px] md:h-[300px] sm:h-[270px]"
       />
       <img
         src="{% static 'assets/about2.png' %}"
         alt=""
-        class="absolute bottom-8 left-40 sm:left-0 sm:top-16 sm:h-[235px]"
+        class="absolute bottom-0 left-0 h-[235px] lg:h-[336px] md:h-[300px] sm:h-[270px]"
       />
     </div>
   </div>
 </section>
 
-<section class="container my-52 px-28 sm:px-5">
-  <h2 class="text-h2-desktop sm:text-h2-mobile text-center text-black">
-    Galerie
-  </h2>
-  <div class="mt-16 grid grid-cols-4 gap-8">
+<section id="galery" class="custom-container my-40">
+  <h2 class="2xl:text-5xl text-center text-3xl sm:text-4xl">Galerie</h2>
+  <div class="mt-16 grid grid-cols-2 gap-8 sm:grid-cols-4">
     <div class="flex">
       <img src="{% static 'assets/about2.png' %}" alt="" class="" />
     </div>
@@ -281,7 +250,7 @@
   </div>
   <div class="mt-8 flex w-full justify-center gap-2">
     <button
-      class="border-lightgrey cursor-pointer rounded-lg border bg-white px-5 py-2"
+      class="group cursor-pointer rounded-lg border border-lightgrey bg-white px-5 py-2 hover:bg-mediumgrey"
     >
       <svg
         width="28"
@@ -292,15 +261,15 @@
       >
         <path
           d="M17.2083 20.7733L10.7916 14.3566L17.2083 7.93994"
-          stroke="black"
           stroke-width="2"
           stroke-linecap="round"
           stroke-linejoin="round"
+          class="stroke-black group-hover:stroke-darkgrey"
         />
       </svg>
     </button>
     <button
-      class="border-lightgrey cursor-pointer rounded-lg border bg-white px-5 py-2"
+      class="group cursor-pointer rounded-lg border border-lightgrey bg-white px-5 py-2 hover:bg-mediumgrey"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -311,10 +280,10 @@
       >
         <path
           d="M10.7917 7.93994L17.2084 14.3566L10.7917 20.7733"
-          stroke="black"
           stroke-width="2"
           stroke-linecap="round"
           stroke-linejoin="round"
+          class="stroke-black group-hover:stroke-darkgrey"
         />
       </svg>
     </button>

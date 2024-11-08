@@ -2,9 +2,9 @@
 	"editor.showFoldingControls": "always",
 	"editor.folding": true,
 	"editor.foldingStrategy": "indentation",
-	"[django-html]": {
-		"editor.defaultFormatter": "HookyQR.beautify"
-	},
+	// "[django-html]": {
+	// 	"editor.defaultFormatter": "HookyQR.beautify"
+	// },
 	"emmet.includeLanguages": {
 		"django-html": "html"
 	}
