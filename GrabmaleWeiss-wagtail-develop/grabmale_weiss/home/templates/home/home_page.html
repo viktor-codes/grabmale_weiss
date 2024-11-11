@@ -1,5 +1,6 @@
 {% extends "base.html" %} {% load static wagtailcore_tags wagtailimages_tags %}
 {% block content %}
+{% comment %} Hero Section {% endcomment %}
 <section id="hero" class="custom-container min-h-100svh relative">
   <img
     src="{% static 'assets/banner.png' %}"
@@ -42,13 +43,15 @@
   </div>
 </section>
 
-<section id="our_services" class="custom-container mt-24">
+{% comment %} Services Section {% endcomment %}
+<section id="our_services" class="custom-container mt-12 sm:mt-24">
   <div class="text-center">
-    <h2 class="2xl:text-5xl text-3xl sm:text-4xl">Unser Service</h2>
-    <p class="my-8 font-rethink text-base text-darkgrey">
-      Der Steinmetz- und Steinbildhauermeister Vincenzo Comite berät Sie
-      persönlich in allen Fragen rund um:
-    </p>
+    <h2 class="2xl:text-5xl text-3xl sm:text-4xl">
+      {{ page.services_section_title }}
+    </h2>
+    <div class="my-8 font-rethink text-base text-darkgrey">
+      {{  page.services_section_description|richtext }}
+    </div>
   </div>
   <div
     class="2xl:grid-cols-4 grid grid-cols-1 gap-5 md:grid-cols-3 sm:grid-cols-2 sm:gap-8"
@@ -70,62 +73,61 @@
     </div>
     {% endfor %}
   </div>
-
+  {% comment %} Features Section {% endcomment %}
   <div
     class="flex flex-col items-start justify-between gap-10 self-stretch pt-16 lg:gap-52 sm:flex-row sm:gap-20"
   >
     <div
       class="flex w-full max-w-[370px] flex-col items-start justify-between self-stretch"
     >
-      <h2 class="text-2xl lg:text-4xl sm:text-3xl">Wir bieten auch</h2>
-      <p class="hidden font-rethink text-base sm:block">
-        Alle Schriften sind bei uns handgezeichnet und handgeschlagen (keine
-        Computer- oder Plotterschriften).
-      </p>
+      <h2 class="text-2xl lg:text-4xl sm:text-3xl">
+        {{ page.features_title }}
+      </h2>
+      <div class="hidden font-rethink text-base sm:block">
+        {{ page.features_footer_note|richtext }}
+      </div>
     </div>
     <div class="flex flex-col items-start gap-8">
-      <h3 class="text-xl lg:text-2xl">
-        Professioneller Handwerksbetrieb für Nachgestaltungen und
-        Restaurierungen von Grabmalen
-      </h3>
-      <p class="font-rethink text-base text-darkgrey">
-        Wir sind ein erfahrener Handwerksbetrieb, spezialisiert auf die
-        Nachgestaltung und Restaurierung von Grabmalen, um ihre Schönheit und
-        Bedeutung zu bewahren.
-      </p>
+      {% for block in page.features_items %}
 
+      <h3 class="text-xl lg:text-2xl">
+        {{ block.value.subtitle}}
+      </h3>
+      <div class="font-rethink text-base text-darkgrey">
+        {{ block.value.features_text|richtext }}
+      </div>
+
+      {% if not forloop.last %}
       <hr class="w-full text-mediumgrey" />
+      {% endif %}
 
-      <h3 class="text-xl lg:text-2xl">
-        Besondere Fachkenntnisse für Restaurierung von alten Denkmälern
-      </h3>
-      <p class="font-rethink text-base text-darkgrey">
-        Mit unseren besonderen Fachkenntnissen in der Restaurierung alter
-        Denkmäler schützen und bewahren wir kulturelles Erbe für zukünftige
-        Generationen.
-      </p>
+      {% endfor %}  
     </div>
     <div
       class="mx-auto max-w-96 rounded-md bg-mediumgrey py-2 text-center sm:hidden"
     >
-      <p class="font-rethink text-[14px] text-black">
-        Alle Schriften sind bei uns handgezeichnet und handgeschlagen (keine
-        Computer- oder Plotterschriften).
-      </p>
+      <div class="font-rethink text-[14px] text-black">
+        {{ page.features_footer_note|richtext }}
+      </div>
     </div>
   </div>
 </section>
+
+{% comment %} About Us Section {% endcomment %}
 <section id="about_us" class="custom-container mt-36">
-  <h2 class="2xl:text-5xl text-center text-3xl sm:text-4xl">Über Uns</h2>
+  <h2 class="2xl:text-5xl text-center text-3xl sm:text-4xl">
+    {{ page.about_us_title }}
+  </h2>
 
   <div class="mt-12 flex flex-col gap-10 md:flex-row sm:gap-40">
     <!-- Timeline Column -->
     <div class="relative flex w-full flex-col md:w-1/2">
-      <h3 class="mb-5 text-xl lg:text-2xl sm:mb-8">Unsere Geschichte</h3>
+      <h3 class="mb-5 text-xl lg:text-2xl sm:mb-8">
+        {{ page.about_us_subtitle }}
+      </h3>
 
-      <ol
-        class="gradient-to-b relative border-s border-mediumgrey to-transparent"
-      >
+      <ol class="relative border-s border-mediumgrey">
+        {% for block in page.about_us_stories %}
         <li class="mb-10 ms-4">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -145,107 +147,63 @@
             />
           </svg>
           <time class="font-rethink text-base text-darkgrey"
-            >Februar, 1967</time
+            >{{ block.value.timeline_date }}</time
           >
-
-          <p class="my-4 font-rethink text-base font-normal text-black">
-            Der Betrieb wurde von Steinmetzmeister Siegfried Weiss gegründet.
-          </p>
-        </li>
-        <li class="mb-10 ms-4">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="17"
-            height="16"
-            viewBox="0 0 17 16"
-            fill="none"
-            class="absolute -start-[9.5px] mt-1"
-          >
-            <circle
-              cx="8.94275"
-              cy="8"
-              r="7"
-              fill="#EDEDED"
-              stroke="#636363"
-              stroke-width="2"
-            />
-          </svg>
-          <time class="font-rethink text-base text-darkgrey"
-            >Dezember, 2005</time
-          >
-
-          <p class="my-4 font-rethink text-base font-normal text-black">
-            Übernahme des Unternehmens durch Steinmetz- und
-            Steinbildhauer-Meister Vincenzo Comité.
-          </p>
-        </li>
-        <li class="mb-10 ms-4">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="17"
-            height="16"
-            viewBox="0 0 17 16"
-            fill="none"
-            class="absolute -start-[9.5px] mt-1"
-          >
-            <circle
-              cx="8.94275"
-              cy="8"
-              r="7"
-              fill="#EDEDED"
-              stroke="#636363"
-              stroke-width="2"
-            />
-          </svg>
-          <time class="font-rethink text-base text-darkgrey">Aktuell</time>
 
           <div class="my-4 font-rethink text-base font-normal text-black">
-            <p>
-              Die Firma Grabmale Weiss e.K. beschäftigt derzeit einen
-              Steinmetz-und Steinbildhauer-Meister, einen Steinmetzgesellen,
-              einen Steinmetzlehrling und eine Bürokraft.
-            </p>
-            <p class="mt-2">
-              Die Firma Grabmale Weiss ist zudem ein langjähriger und erfahrener
-              Ausbildungsbetrieb.
-            </p>
+            {{ block.value.story_text|richtext }}
           </div>
         </li>
+        {% endfor %}
       </ol>
     </div>
 
-    <!-- Placeholder for Images Column or Additional Content -->
-    <div class="relative h-[350px] md:w-1/2 sm:h-[500px]">
-      <img
-        src="{% static 'assets/about1.png' %}"
-        alt=""
-        class="absolute right-0 top-0 h-[235px] lg:h-[336px] md:h-[300px] sm:h-[270px]"
-      />
-      <img
-        src="{% static 'assets/about2.png' %}"
-        alt=""
-        class="absolute bottom-0 left-0 h-[235px] lg:h-[336px] md:h-[300px] sm:h-[270px]"
-      />
-    </div>
+    {% comment %} 
+    Placeholder for Images Column or Additional Content 
+    {% endcomment %}
+    <div class="relative h-[350px] md:w-1/2 sm:h-[500px] flex items-center justify-center">
+      {%image page.about_us_images.0.value fill-281x363 as about1_img%}
+          <img
+            src="{{ about1_img.url }}"
+            alt="{{ about1_img.title }}"
+            class="absolute right-0 top-0 h-[235px] lg:h-[336px] md:h-[300px] sm:h-[270px]"
+          />
+    
+      {%image page.about_us_images.1.value fill-281x363 as about2_img%}
+          <img
+            src="{{ about2_img.url }}" 
+            alt="{{ about2_img.title }}"
+            class="absolute bottom-0 left-0 h-[235px] lg:h-[336px] md:h-[300px] sm:h-[270px]"
+          />
+    </div> 
+    
+      
   </div>
 </section>
-
-<section id="galery" class="custom-container my-40">
+ 
+{% comment %} Gallery Section {% endcomment %}
+<section id="gallery" class="custom-container my-40">
   <h2 class="2xl:text-5xl text-center text-3xl sm:text-4xl">Galerie</h2>
+  {%image page.gallery_images.0.value width-300 as img1%}
+  {%image page.gallery_images.1.value width-300 as img2%}
+  {%image page.gallery_images.2.value width-300 as img3%}
+  {%image page.gallery_images.3.value width-300 as img4%}
+  {%image page.gallery_images.4.value width-300 as img5%}
+  {%image page.gallery_images.5.value width-300 as img6%}
   <div class="mt-16 grid grid-cols-2 gap-8 sm:grid-cols-4">
     <div class="flex">
-      <img src="{% static 'assets/about2.png' %}" alt="" class="" />
+      <img src="{{ img1.url }}" alt="" class="" />
     </div>
     <div class="flex flex-col gap-8">
-      <img src="{% static 'assets/galery1.png' %}" alt="" class="" />
-      <img src="{% static 'assets/galery2.png' %}" alt="" class="" />
+      <img src="{{ img2.url }}" alt="" class="" />
+      <img src="{{ img3.url }}" alt="" class="" />
     </div>
     <div class="flex">
-      <img src="{% static 'assets/about1.png' %}" alt="" class="" />
+      <img src="{{ img4.url }}" alt="" class="" />
     </div>
     <div class="flex flex-col gap-8">
-      <img src="{% static 'assets/galery3.png' %}" alt="" class="" />
-      <img src="{% static 'assets/galery4.png' %}" alt="" class="" />
+      <img src="{{ img5.url }}" alt="" class="" />
+      <img src="{{ img6.url }}" alt="" class="" />
     </div>
   </div>
   <div class="mt-8 flex w-full justify-center gap-2">
